@@ -1,0 +1,56 @@
+/* 全域設定 */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 漸層背景 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Segoe UI', Microsoft JhengHei, sans-serif;
+}
+
+/* 卡片主體 */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px); /* 滑鼠移上去會輕微浮起 */
+}
+
+/* 標題設定 */
+h1 {
+    color: #4a4a4a;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 0.5rem;
+}
+
+/* 資訊文字 */
+.info p {
+    font-size: 1.1rem;
+    color: #333;
+    line-height: 1.8;
+    margin: 10px 0;
+    text-align: left; /* 文字靠左比較整齊 */
+}
+
+.info strong {
+    color: #764ba2;
+    margin-right: 10px;
+}
+
+/* 頁尾小字 */
+.footer {
+    margin-top: 30px;
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+}
