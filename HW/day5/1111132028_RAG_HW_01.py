@@ -62,14 +62,12 @@ def main():
         print("❌ 找不到 questions.csv，請確認檔案路徑！")
         return
 
-    # 讀取與對齊欄位
     df = pd.read_csv(questions_path)
     df.columns = [c.strip().lower() for c in df.columns]
     df = df.rename(columns={'questions': 'question', 'question_id': 'q_id', 'id': 'q_id'})
 
     all_results = []
     
-    # 參數設定 (同步同學風格設定)
     chunk_size = 500
     chunk_overlap = 250
     
@@ -91,7 +89,6 @@ def main():
         print(f"🚀 正在執行方法：{m_name} ...")
         all_chunks, all_payloads = [], []
         
-        # 1. 執行切塊
         for f_path in data_files:
             if not os.path.exists(f_path): continue
             with open(f_path, "r", encoding="utf-8") as f:
@@ -101,11 +98,9 @@ def main():
                 for c in chunks:
                     all_payloads.append({"text": c, "source": os.path.basename(f_path)})
 
-        # 2. 存入 VDB
         coll_name = f"hw5_{m_name.encode('utf-8').hex()}"
         setup_collection(coll_name, all_chunks, all_payloads)
 
-        # 3. 逐題檢索與評分 (一個一個跳出來的效果)
         method_score = 0
         for _, row in df.iterrows():
             q_text = str(row['question'])
@@ -119,7 +114,6 @@ def main():
                 source = search_res[0].payload['source']
                 method_score += score
                 
-                # 這裡保留了你喜歡的動態輸出感
                 print(f"  🔹 Q{q_id} ({m_name}): 分數 {score:.4f}, 來源 {source}")
 
                 all_results.append({
