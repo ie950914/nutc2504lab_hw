@@ -199,7 +199,7 @@ def main():
             q_vec = q_vec_result[0]
             
             try:
-                search_res = client.query_points(collection_name=coll_name, query=q_vec, limit=3).points
+                search_res = client.query_points(collection_name=coll_name, query=q_vec, limit=5).points
             except Exception as e:
                 print(f"  ❌ Q{q_id}: 搜尋失敗 - {e}")
                 continue
